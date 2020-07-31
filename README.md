@@ -19,19 +19,19 @@ All you need is [Docker](https://docs.docker.com/get-docker/)
 <!-- replacer_stop -->
 ```
 
-1. Prepare a file with the text that you want to inject
+2. Prepare a file with the text that you want to inject
 
 ```bash
 $ echo -e '<div>This is the incoming text block</div>\n<div>It worked!</div>' > incoming.txt
 ```
 
-1. Run the application
+3. Run the application
 
 ```bash
 $ docker run --rm -it -v ${PWD}/:/app unfor19/replacer -sf /app/incoming.txt -df /app/README.md
 ```
 
-1. That's it, your text has been replaced! To see more options
+4. That's it, your text has been replaced! To see more options
 
 <!-- replacer_start_help -->
 
