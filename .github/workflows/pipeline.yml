@@ -21,8 +21,8 @@ jobs:
           docker build . --file "${DOCKER_FILENAME}" --tag "${DOCKER_TAG}"
       - name: Test with bash script
         run: |
-          TEST_FILE_PATH="tests/test.sh"
-          docker run --rm -it -v ${PWD}/:/app "${DOCKER_TAG}" bash "${TEST_FILE_PATH}"
+          export TEST_FILE_PATH="tests/test.sh"
+          docker run --rm -v ${PWD}/:/app "${DOCKER_TAG}" bash "${TEST_FILE_PATH}"
       - name: Push to Docker registry
         run: |
           echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
