@@ -14,7 +14,7 @@ Lalala!
 ---
 ```
 
-<!-- replacer_stop -->
+<!-- replacer_end -->
 
 Do that
 
