@@ -10,7 +10,7 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
     env:
-      SCRIPT_FILE_PATH: "scripts/updatereadme.md"
+      SCRIPT_FILE_PATH: "scripts/update_readme.sh"
     steps:
       - uses: actions/checkout@v2
       - name: Update README.md file
