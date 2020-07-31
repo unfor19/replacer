@@ -1,5 +1,7 @@
 # replacer
 
+[![testing](https://github.com/unfor19/replacer/workflows/testing/badge.svg)](<(https://github.com/unfor19/replacer/actions?query=workflow%3Atesting)>)
+
 Find and replace multiline strings
 
 ## Requirements
