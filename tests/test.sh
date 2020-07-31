@@ -11,6 +11,8 @@ perl -p -i -e "s/\r//g" "$INPUT_FILE"
 
 if cmp -b --verbose "$INPUT_FILE" "$EXPECTED_FILE" ; then
     echo "Success"
+    exit 0
 else
     echo "No match"
+    exit 1
 fi

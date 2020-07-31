@@ -1,0 +1,19 @@
+name: testing
+
+on:
+  push:
+    paths-ignore:
+      - "README.md"
+
+jobs:
+  test-ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -y && sudo apt-get install -y bsdmainutils
+      - name: Test with bash script
+        run: |
+          bash scripts/test.sh
