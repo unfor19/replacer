@@ -1,4 +1,4 @@
-name: Docker build and push example
+name: Build, test and push
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - "README.md"
 
 jobs:
-  build:
+  pipeline:
     runs-on: ubuntu-latest
 
     env:
@@ -21,8 +21,8 @@ jobs:
           docker build . --file "${DOCKER_FILENAME}" --tag "${DOCKER_TAG}"
       - name: Test with bash script
         run: |
-          docker run --rm -it -v ${PWD}/:/app \
-            "${DOCKER_TAG}" bash tests/test.sh
+          TEST_FILE_PATH="tests/test.sh"
+          docker run --rm -it -v ${PWD}/:/app "${DOCKER_TAG}" bash "${TEST_FILE_PATH}"
       - name: Push to Docker registry
         run: |
           echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
