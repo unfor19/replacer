@@ -28,14 +28,14 @@ $ echo -e '<div>This is the incoming text block</div>\n<div>It worked!</div>' > 
 1. Run the application
 
 ```bash
-docker run --rm -it -v ${PWD}/:/app unfor19/replacer -sf /app/incoming.txt -df /app/README.md
+$ docker run --rm -it -v ${PWD}/:/app unfor19/replacer -sf /app/incoming.txt -df /app/README.md
 ```
 
 1. That's it, your text has been replaced! To see more options
 
 <!-- replacer_start_help -->
 
-```
+```bash
 $ docker run --rm -it -v ${PWD}/:/app unfor19/replacer --help
 
 Usage: bash main.sh
