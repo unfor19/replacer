@@ -10,13 +10,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      DOCKER_TAG: "unfor19/replacer:latest"
+      DOCKER_FILENAME: "Dockerfile"
+
     steps:
       - uses: actions/checkout@v2
-      - name: Build and push
+      - name: Build Docker image
         run: |
-          export DOCKER_TAG="unfor19/replacer:latest"
-          export DOCKER_FILENAME="Dockerfile"
-
           docker build . --file "${DOCKER_FILENAME}" --tag "${DOCKER_TAG}"
+      - name: Test with bash script
+        run: |
+          SRC_FILE_PATH="/app/tests/app.log"
+          DST_FILE_PATH="/app/tests/TEST.md"
+          docker run --rm -it -v ${PWD}/:/app \
+            "${DOCKER_TAG}" bash tests/test.sh
+      - name: Push to Docker registry
+        run: |
           echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker push "${DOCKER_TAG}"
