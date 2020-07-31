@@ -18,10 +18,10 @@ jobs:
           bash "${SCRIPT_FILE_PATH}"
       - name: Commit and push new README.md file
         run: |
+          git config --global user.email "githubactions@meirg.co.il"
+          git config --global user.name "githubactions"        
           git add README.md
           git commit -m "Updated by pipeline"
-          git config --global user.email "githubactions@meirg.co.il"
-          git config --global user.name "githubactions"
           git push
 
   pipeline:
