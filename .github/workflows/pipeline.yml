@@ -1,0 +1,20 @@
+name: Docker build and push example
+
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - "README.md"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and push
+        run: |
+          export DOCKER_TAG="unfor19/replacer:latest"
+          docker build . --file Dockerfile.example --tag "${DOCKER_TAG}"
+          echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker push "${DOCKER_TAG}"
