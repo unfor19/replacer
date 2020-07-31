@@ -15,6 +15,8 @@ jobs:
       - name: Build and push
         run: |
           export DOCKER_TAG="unfor19/replacer:latest"
-          docker build . --file Dockerfile.example --tag "${DOCKER_TAG}"
+          export DOCKER_FILENAME="Dockerfile"
+
+          docker build . --file "${DOCKER_FILENAME}" --tag "${DOCKER_TAG}"
           echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker push "${DOCKER_TAG}"
