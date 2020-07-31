@@ -45,7 +45,7 @@ Usage: bash main.sh
 	--src_file_path     |  -sf  [Required]                 Full path to source file
 	--dst_file_path     |  -df  [Required]                 Full path to destination file
 	--start_value       |  -sv  [<!-- replacer_start -->]  From where to start
-	--end_value         |  -ev  [<!-- replacer_stop -->]   Where to stop
+	--end_value         |  -ev  [<!-- replacer_end -->]    Where to stop
 	--create_backup     |  -cb  [true]                     Create a backup file
 	--backup_file_path  |  -bp  [./]                       Full path to backup file
 
