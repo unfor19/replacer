@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Update README.md file
         run: |
-          bash "${SCRIPT_FILE_PATH}"
+          bash "${UPDATE_FILE_PATH}"
       - name: Commit and push new README.md file
         run: |
           bash "${COMMITPUSH_FILE_PATH}"
