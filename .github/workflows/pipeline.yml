@@ -10,7 +10,8 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
     env:
-      SCRIPT_FILE_PATH: "scripts/update_readme.sh"
+      UPDATE_FILE_PATH: "scripts/update_readme.sh"
+      COMMITPUSH_FILE_PATH: "scripts/commit_push.sh"
     steps:
       - uses: actions/checkout@v2
       - name: Update README.md file
@@ -18,11 +19,7 @@ jobs:
           bash "${SCRIPT_FILE_PATH}"
       - name: Commit and push new README.md file
         run: |
-          git config --global user.email "githubactions@meirg.co.il"
-          git config --global user.name "githubactions"    
-          git add README.md
-          git commit -m "Updated by pipeline"
-          git push
+          bash "${COMMITPUSH_FILE_PATH}"
 
   pipeline:
     runs-on: ubuntu-latest
