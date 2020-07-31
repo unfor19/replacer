@@ -21,8 +21,6 @@ jobs:
           docker build . --file "${DOCKER_FILENAME}" --tag "${DOCKER_TAG}"
       - name: Test with bash script
         run: |
-          SRC_FILE_PATH="/app/tests/app.log"
-          DST_FILE_PATH="/app/tests/TEST.md"
           docker run --rm -it -v ${PWD}/:/app \
             "${DOCKER_TAG}" bash tests/test.sh
       - name: Push to Docker registry
