@@ -18,7 +18,7 @@ All you need is [Docker](https://docs.docker.com/get-docker/)
 <div>This is the text block that will be replaced</div>
 <div>Let's make it work!</div>
 
-<!-- replacer_stop -->
+<!-- replacer_end -->
 ```
 
 2. Prepare a file with the text that you want to inject
@@ -38,20 +38,20 @@ $ docker run --rm -it -v ${PWD}/:/app unfor19/replacer -sf /app/incoming.txt -df
 <!-- replacer_start_help -->
 
 ```bash
-$ docker run --rm -it -v ${PWD}/:/app unfor19/replacer --help
+$ docker run --rm -it -v ${PWD}/:/app unfor19/replacer:latest --help
 
 Usage: bash main.sh
 
-   --src_file_path     |  -sf  [Required]                 Full path to source file
-   --dst_file_path     |  -df  [Required]                 Full path to destination file
-   --start_value       |  -sv  [<!-- replacer_start -->]  From where to start
-   --end_value         |  -ev  [<!-- replacer_stop -->]   Where to stop
-   --create_backup     |  -cb  [true]                     Create a backup file
-   --backup_file_path  |  -bp  [./]                       Full path to backup file
+	--src_file_path     |  -sf  [Required]                 Full path to source file
+	--dst_file_path     |  -df  [Required]                 Full path to destination file
+	--start_value       |  -sv  [<!-- replacer_start -->]  From where to start
+	--end_value         |  -ev  [<!-- replacer_end -->]    Where to stop
+	--create_backup     |  -cb  [true]                     Create a backup file
+	--backup_file_path  |  -bp  [./]                       Full path to backup file
 
 ```
 
-<!-- replacer_stop_help -->
+<!-- replacer_end_help -->
 
 ## Authors
 

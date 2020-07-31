@@ -15,7 +15,7 @@ default="<!-- replacer_start -->"
 name=end_value
 short=ev
 description=Where to stop
-default="<!-- replacer_stop -->"
+default="<!-- replacer_end -->"
 ---
 name=create_backup
 short=cb

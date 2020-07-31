@@ -7,6 +7,21 @@ on:
       - "README.md"
 
 jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    env:
+      SCRIPT_FILE_PATH: "scripts/updatereadme.md"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update README.md file
+        run: |
+          bash "${SCRIPT_FILE_PATH}"
+      - name: Commit and push new README.md file
+        run: |
+          git add README.md
+          git commit -m "Updated by pipeline"
+          git push
+
   pipeline:
     runs-on: ubuntu-latest
 
