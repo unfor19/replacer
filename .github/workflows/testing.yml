@@ -16,4 +16,4 @@ jobs:
           sudo apt-get update -y && sudo apt-get install -y bsdmainutils
       - name: Test with bash script
         run: |
-          bash scripts/test.sh
+          bash tests/test.sh
