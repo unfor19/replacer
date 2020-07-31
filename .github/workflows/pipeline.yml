@@ -20,6 +20,8 @@ jobs:
         run: |
           git add README.md
           git commit -m "Updated by pipeline"
+          git config --global user.email "githubactions@meirg.co.il"
+          git config --global user.name "githubactions"
           git push
 
   pipeline:
