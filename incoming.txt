@@ -1,2 +1,0 @@
-<div>This is the incoming text block</div>
-<div>It worked!</div>
