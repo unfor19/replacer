@@ -1,11 +1,17 @@
 ---
-name=src_file_path
-short=sf
-description=Full path to source file
----
 name=dst_file_path
 short=df
 description=Full path to destination file
+---
+name=src_file_path
+short=sf
+description=Full path to source file that will be injected
+default=replacer_null
+---
+name=src_text
+short=st
+description=Text of the source to inject
+default=replacer_null
 ---
 name=start_value
 short=sv
@@ -29,7 +35,7 @@ description=Full path to backup file
 default=./
 ---
 name=bargs
-description=bash main.sh
+description=bash main.sh -sf incoming.txt -df README.md
 default=irrelevant
 ---
 ---
