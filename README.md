@@ -30,7 +30,7 @@ $ echo -e '<div>This is the incoming text block</div>\n<div>It worked!</div>' > 
 3. Run the application
 
 ```bash
-$ docker run --rm -it -v ${PWD}/:/app unfor19/replacer -sf /app/incoming.txt -df /app/README.md
+$ docker run --rm -v ${PWD}/:/app unfor19/replacer -sf /app/incoming.txt -df /app/README.md
 ```
 
 4. That's it, your text has been replaced! To see more options
