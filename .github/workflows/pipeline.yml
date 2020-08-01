@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DOCKER_BASE_TAG: "unfor19/replace"
+      DOCKER_BASE_TAG: "unfor19/replacer"
       DOCKER_FILENAME: "Dockerfile.alpine"
       TEST_FILE_PATH: "tests/test_docker.sh"
 
