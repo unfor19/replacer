@@ -38,7 +38,7 @@ $ docker run --rm -it -v ${PWD}/:/app unfor19/replacer -sf /app/incoming.txt -df
 <!-- replacer_start_help -->
 
 ```bash
-$ docker run --rm -it -v ${PWD}/:/app unfor19/replacer:latest --help
+$ docker run --rm -v ${PWD}/:/app unfor19/replacer --help
 
 Usage: bash main.sh -sf incoming.txt -df README.md
 
