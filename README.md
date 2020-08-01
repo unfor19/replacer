@@ -10,7 +10,7 @@ All you need is [Docker](https://docs.docker.com/get-docker/)
 
 ## Getting Started
 
-1. Insert a start tag and stop tag in the text file, for example
+1. Insert a start tag and stop tag to a text file, for example
 
 ```html
 <!-- replacer_start -->
@@ -53,6 +53,8 @@ Usage: bash main.sh -sf incoming.txt -df README.md
 ```
 
 <!-- replacer_end_help -->
+
+_NOTE_: the code block above :point_up: was automatically generated with replacer! See the raw version of this [README.md](https://raw.githubusercontent.com/unfor19/replacer/master/README.md) file and [update_readme.sh](https://github.com/unfor19/replacer/blob/master/scripts/update_readme.sh)
 
 ## Authors
 
