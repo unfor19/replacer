@@ -21,11 +21,11 @@ jobs:
         run: |
           bash "${COMMITPUSH_FILE_PATH}"
 
-  pipeline:
+  ubuntu:
     runs-on: ubuntu-latest
 
     env:
-      DOCKER_TAG: "unfor19/replacer:latest"
+      DOCKER_TAG: "unfor19/replacer:ubuntu"
       DOCKER_FILENAME: "Dockerfile"
       TEST_FILE_PATH: "tests/test_docker.sh"
 
@@ -41,3 +41,25 @@ jobs:
         run: |
           echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker push "${DOCKER_TAG}"
+
+  alpine:
+    runs-on: ubuntu-latest
+
+    env:
+      DOCKER_BASE_TAG: "unfor19/replace"
+      DOCKER_FILENAME: "Dockerfile.alpine"
+      TEST_FILE_PATH: "tests/test_docker.sh"
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Docker image
+        run: |
+          docker build . --file "${DOCKER_FILENAME}" --tag "${DOCKER_BASE_TAG}":latest --tag "${DOCKER_BASE_TAG}"
+      - name: Test with bash script
+        run: |
+          bash "${TEST_FILE_PATH}"
+      - name: Push to Docker registry
+        run: |
+          echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker push "${DOCKER_BASE_TAG}"
+          docker push "${DOCKER_BASE_TAG}:latest"

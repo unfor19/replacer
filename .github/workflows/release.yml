@@ -5,13 +5,12 @@ on:
     types: [published, edited]
 
 jobs:
-  release:
+  ubuntu:
     runs-on: ubuntu-latest
 
     env:
       DOCKER_TAG: "unfor19/replacer"
       DOCKER_FILENAME: "Dockerfile"
-      TEST_FILE_PATH: "tests/test_docker.sh"
 
     steps:
       - uses: actions/checkout@v2
@@ -25,5 +24,27 @@ jobs:
       - name: Push to Docker registry
         run: |
           export DOCKER_TAG="${DOCKER_TAG}:$(cat version)"
+          echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker push "${DOCKER_TAG}"
+
+  alpine:
+    runs-on: ubuntu-latest
+
+    env:
+      DOCKER_TAG: "unfor19/replacer"
+      DOCKER_FILENAME: "Dockerfile.alpine"
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prepare version file
+        run: |
+          echo "$GITHUB_REF" | sed "s|refs\/tags\/v||g" > version
+      - name: Build Docker image
+        run: |
+          export DOCKER_TAG="${DOCKER_TAG}:$(cat version)-alpine"
+          docker build . --file "${DOCKER_FILENAME}" --tag "${DOCKER_TAG}"
+      - name: Push to Docker registry
+        run: |
+          export DOCKER_TAG="${DOCKER_TAG}:$(cat version)-alpine"
           echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker push "${DOCKER_TAG}"
