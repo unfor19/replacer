@@ -10,6 +10,7 @@ REPLACER_START_VALUE="<!-- replacer_start_help -->"
 REPLACER_END_VALUE="<!-- replacer_end_help -->"
 
 docker rm -f replacer_help
+docker build -f Dockerfile "${DOCKER_TAG}" .
 docker run --name replacer_help "${DOCKER_TAG}" --help
 help_message=$(docker logs replacer_help)
 
