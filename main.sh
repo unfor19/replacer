@@ -17,8 +17,15 @@ else
     CREATE_BACKUP=""
 fi
 
-[[ ! -f "${SRC_FILE_PATH}" ]] && error_msg "${SRC_FILE_PATH} doesn't exist."
-src_file_stream=$(cat "${SRC_FILE_PATH}")
+if [[ "${SRC_FILE_PATH}" != "replacer_null" ]]; then
+    [[ ! -f "${SRC_FILE_PATH}" ]] && error_msg "${SRC_FILE_PATH} doesn't exist."
+    src_file_stream=$(cat "${SRC_FILE_PATH}")
+elif [[ "${SRC_TEXT}" != "replacer_null" ]]; then
+    src_file_stream="${SRC_TEXT}"
+else
+    error_msg "Must provide src_file_path or src_text"
+fi
+
 
 result=$(perl \
     -i"${CREATE_BACKUP}" \
