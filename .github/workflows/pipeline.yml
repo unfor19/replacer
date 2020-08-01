@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build Docker image
         run: |
-          docker build . --file "${DOCKER_FILENAME}" --tag "${DOCKER_TAG}"
+          docker build --file "${DOCKER_FILENAME}" --tag "${DOCKER_TAG}" .
       - name: Test with bash script
         run: |
           bash "${TEST_FILE_PATH}"
@@ -54,12 +54,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build Docker image
         run: |
-          docker build . --file "${DOCKER_FILENAME}" --tag "${DOCKER_BASE_TAG}":latest --tag "${DOCKER_BASE_TAG}"
+          docker build --file "${DOCKER_FILENAME}" --tag "${DOCKER_BASE_TAG}:latest" --tag "${DOCKER_BASE_TAG}:alpine" .
       - name: Test with bash script
         run: |
           bash "${TEST_FILE_PATH}"
       - name: Push to Docker registry
         run: |
           echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker push "${DOCKER_BASE_TAG}"
+          docker push "${DOCKER_BASE_TAG}:alpine"
           docker push "${DOCKER_BASE_TAG}:latest"

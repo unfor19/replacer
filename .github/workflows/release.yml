@@ -20,12 +20,12 @@ jobs:
       - name: Build Docker image
         run: |
           export DOCKER_TAG="${DOCKER_TAG}:$(cat version)"
-          docker build . --file "${DOCKER_FILENAME}" --tag "${DOCKER_TAG}"
+          docker build --file "${DOCKER_FILENAME}" --tag "${DOCKER_TAG}-ubuntu" .
       - name: Push to Docker registry
         run: |
           export DOCKER_TAG="${DOCKER_TAG}:$(cat version)"
           echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker push "${DOCKER_TAG}"
+          docker push "${DOCKER_TAG}-ubuntu"
 
   alpine:
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
       - name: Build Docker image
         run: |
           export DOCKER_TAG="${DOCKER_TAG}:$(cat version)-alpine"
-          docker build . --file "${DOCKER_FILENAME}" --tag "${DOCKER_TAG}"
+          docker build --file "${DOCKER_FILENAME}" --tag "${DOCKER_TAG}" .
       - name: Push to Docker registry
         run: |
           export DOCKER_TAG="${DOCKER_TAG}:$(cat version)-alpine"
