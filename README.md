@@ -40,10 +40,11 @@ $ docker run --rm -it -v ${PWD}/:/app unfor19/replacer -sf /app/incoming.txt -df
 ```bash
 $ docker run --rm -it -v ${PWD}/:/app unfor19/replacer:latest --help
 
-Usage: bash main.sh
+Usage: bash main.sh -sf incoming.txt -df README.md
 
-	--src_file_path     |  -sf  [Required]                 Full path to source file
 	--dst_file_path     |  -df  [Required]                 Full path to destination file
+	--src_file_path     |  -sf  [replacer_null]            Full path to source file that will be injected
+	--src_text          |  -st  [replacer_null]            Text of the source to inject
 	--start_value       |  -sv  [<!-- replacer_start -->]  From where to start
 	--end_value         |  -ev  [<!-- replacer_end -->]    Where to stop
 	--create_backup     |  -cb  [true]                     Create a backup file
