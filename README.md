@@ -42,7 +42,7 @@ $ docker run --rm -v ${PWD}/:/app unfor19/replacer --help
 
 Usage: bash main.sh -sf incoming.txt -df README.md
 
-	--dst_file_path     |  -df  [Required]                 Full path to destination file
+	--dst_file_path     |  -df  [REQUIRED]                 Full path to destination file
 	--src_file_path     |  -sf  [replacer_null]            Full path to source file that will be injected
 	--src_text          |  -st  [replacer_null]            Text of the source to inject
 	--start_value       |  -sv  [<!-- replacer_start -->]  From where to start
